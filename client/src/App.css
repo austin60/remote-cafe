@@ -1,0 +1,626 @@
+.App {
+ padding: 0;
+ margin: 0;
+ width: 100vw;
+ min-height: 100vh;
+}
+:root{
+  --yellow:#FFED19;
+  --neworange:#FF8B40;
+  --orange:#FF6922;
+  --orangehover:#FF5B2E;
+  --gray: rgb(245, 245, 240);
+  --black:rgba(0, 0, 0, 0.7);
+}
+.btn{
+  outline:none;
+  border: none;
+  border-radius: 5px;
+  background: var(--neworange);
+}
+.btn:hover{
+  background: var(--orange);
+  cursor: pointer;
+}
+.display-card{
+  background: rgb(245, 245, 240);
+  width: 16rem;
+  height: 23rem;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-bottom: 1rem;
+}
+.image-display{
+  display: flex;
+  width: 98%;
+  height: 75%;
+  margin:auto;
+  
+}
+.image-display img{
+  height: 100%;
+  width:100%;
+  border-radius: 5px;
+}
+.info-display{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 14px;
+ /* padding-top: 4px;*/
+  margin: 10px;
+}
+.food-title{
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+.food-cost{
+  margin-bottom: 2px;
+}
+.info-display button{
+  background:var(--orange) ;
+  outline: none;
+  height: 2rem;
+  border: none;
+  width: 80%;
+  margin:auto;
+  border-radius: 5px;
+  margin-top: 0.35rem;
+}
+.info-display button:hover{
+  background: var(--orangehover);
+  cursor: pointer;
+}
+
+.display-card:hover{
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+/*/////menu-items*/
+.menubar{
+  position: sticky;
+  top:0px;
+  display: flex;
+  width: 100vw;
+  justify-content: space-between;
+  background: var(--neworange);
+  height: 4rem;
+  z-index: 2;
+}
+.menu-items{
+  width: 53%;
+}
+.menu-items ul{
+  display: flex;
+}
+.menu-items ul li{
+  list-style: none;
+  margin-right: 0.7rem;
+}
+.menu-icon{
+  margin-left: 2px;
+  bottom: -13px;
+}
+.dropdown{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  margin-left: -40px;
+  background: var(--neworange);
+  padding-top: 1rem;
+}
+.dropdown li{
+  height: 2rem;
+}
+#category{
+  display: none;
+}
+#price{
+  display: none;
+}
+#account{
+  display: none;
+}
+
+/*////page-footer*/
+.page-footer{
+  position: sticky;
+  top: 87%;
+  width: 100vw;
+  height: 2rem;
+  color: var(--orange);
+  background: var(--black);
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  align-items: center;
+  bottom: 100%;
+}
+.creator{
+  width: 20%;
+}
+.creator a{
+  color: black;
+}
+
+
+
+/*/////////main footer////*/
+.main-footer{
+  position: sticky;
+  top:55%;
+  background-image: linear-gradient(to left, var(--black),var(--orange));
+  display: flex;
+  justify-items: center;
+  width: 100vw;
+  border-top-left-radius:4rem;
+  font-size: 13px;
+  height: auto;
+  min-height: 14rem;
+  flex-direction: column;
+  color: white;
+}
+
+.footer-info{
+  display: flex;
+  font-size: 14px;
+  width: 80%;
+  margin: auto;
+  margin-left: 5rem;
+}
+.company-stament{
+  width: 25%;
+
+}
+.location{
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  padding-left:0.5rem;
+}
+.links{
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+}
+.newsletter{
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+}
+.newslett{
+  display: flex;
+  border-bottom: 1px solid var(--gray);
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.newslett input{
+  border:none;
+  outline: none;
+  width: 77%;
+  background: inherit;
+}
+.socials{
+  display: flex;
+  flex-direction: row;
+}
+.allrights{
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  margin-left: 5rem;
+  border-top: 1px solid white;
+  height: 2rem;
+  align-items: center;
+}
+.social-icon{
+  font-size: 0.8rem;
+}
+.social{
+  border-radius: 50%;
+  padding: 0.4rem;
+  background: var(--gray);
+  margin-right: 0.5rem;
+  color: black;
+}
+.location-email{
+  border-bottom: 1px solid var(--gray);
+  width: 70%;
+}
+
+/*/////////LOG MODALS////////*/
+.logmodal{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 30vw;
+}
+
+.input{
+  height: 1.5rem;
+  margin-bottom: 0.5rem;
+  outline: none;
+}
+.logmodal h2{
+  margin-bottom: 1rem;
+}
+.logmodal button {
+  background: var(--neworange);
+  height:2rem;
+  border: none;
+  border-radius: 5px;
+}
+.su{
+  margin: auto;
+}
+.logmodal p:hover{
+  color: var(--neworange);
+  cursor: pointer;
+}
+.error-message{
+  font-size: 13px;
+  color: rgb(97, 81, 81);
+}
+
+
+
+/*//////food-detail///////*/
+.food-detail{
+  width: 60vw;
+}
+.food-detail h2{
+  margin-bottom: 2rem;
+}
+.food-info{
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.food-image{
+  width: 40%;
+}
+.order-info{
+  width: 56%;
+  padding: 1rem;
+}
+.food-desc{
+  font-size: 15px;
+}
+.order-specs{
+  display: flex;
+  flex-direction: row;
+  width: 40%;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  background: var(--gray);
+}
+
+.order-cost{
+  margin-bottom: 1rem;
+}
+.quant-btn{
+  width: 2.4rem;
+  height: 1.5;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.add{
+  background: var(--neworange);
+}
+.minus{
+  border: 0.2px solid rgb(100, 92, 92);
+}
+.minus:hover{
+  background: rgb(214, 206, 206);
+}
+.add:hover{
+  background: var(--orange); 
+  cursor: pointer;
+}
+.order-btn{
+  width: 80%;
+  height: 2.5rem;
+  border: none;
+  outline: none;
+  background: var(--neworange);
+  border-radius: 5px;
+}
+.order-btn:hover{
+  background: var(--orange);
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/*/////////admin-menu-items////////*/
+.admin-bar{
+width: 100vw;
+display: flex;
+background: rgba(0, 0, 0, 0.7);
+color: var(--orange);
+justify-content: space-between;
+align-items: center;
+position: sticky;
+
+}
+.logo{
+  margin-left: 1rem;
+}
+.admin-menu-items{
+  display: flex;
+  width: 50%;
+  justify-content:center;
+}
+.admin-menu-items ul{
+  display:flex;
+}
+.admin-menu-items ul li{
+  list-style: none;
+  margin-right: 1.5rem;
+}
+
+/*////PAGE////*/
+.page{
+  width: 100vw;
+  min-height: 100vh;
+}
+.display-page{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+.admin-heading{
+  text-align: center;
+}
+.admin-food-page{
+  display: flex;
+  justify-content: space-between;
+  width: 80vw;
+  min-height: 70vh;
+  margin-top: 0.6rem;
+  margin-left: 5%;
+  border-radius: 5px;
+}
+
+.admin-food-page:hover{
+box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.admin-food-images{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 35%;
+}
+.adminimg{
+  height: 40%;
+  width: 60%;
+  margin: auto;
+}
+.adminimg img{
+  width: 100%;
+  height: 100%;
+}
+.admin-food-detail{
+  padding-top: 0.5rem;
+  width: 60%;
+}
+.admin-food-desc{
+  width: 80%;
+  height: 55%;
+  margin-bottom: 1.5rem;
+}
+.admin-food-desc textarea{
+  width: 100%;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+.admin-input{
+  width: 50%;
+  height: 2rem;
+  margin-bottom: 1rem;
+  outline: none;
+}
+.admin-food-detail button{
+  width: 60%;
+  border:none;
+  background: var(--neworange);
+  border-radius: 5px;
+ 
+}
+.admin-food-detail button:hover{
+  cursor: pointer;
+  background: var(--orange);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/*///////order-item/////////*/
+.order-item{
+  width: 97%;
+  height: 4rem;
+  display: flex;
+  background: rgb(243, 238, 238);
+  border-radius: 5px;
+  
+  margin: auto;
+  margin-top: 9px;
+}
+.order-image{
+  width: 15%;
+  height: 100%;
+  margin-left: 10px;
+}
+.order-image img{
+  width: 90%;
+  height: 100%;
+}
+.order-name{
+  width: 20%;
+  display: flex;
+  align-items: center;
+}
+.order-quant{
+  width: 35%;
+  flex-shrink: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.order-quant  button{
+  width: 20%;
+  height: 2rem;
+}
+.order-price{
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left:10px;
+}
+.order-quant{
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+.remove{
+  width: 4rem;
+  border: none;
+  outline: none;
+  background: #EB5C57;
+  height: 2rem;
+  width: 5rem;
+  align-self: center;
+  border-radius: 5px;
+  margin-left: 1.3rem;
+}
+
+/*////////orders page////*/
+.oders-dispay{
+  min-height: 75vh;
+  width: 100vw;
+  display: flex;
+}
+.order-list{
+  width: 68vw;
+  min-height: 100%;
+ 
+}
+.order-payment{
+  width: 30vw;
+  min-height: 100%;
+}
+.order-title{
+  background: var(--black);
+  color: var(--neworange);
+  display: flex;
+  width: 100%;
+  height: 10%;
+  justify-content: space-around;
+  align-items: center;
+}
+.payment-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 65%;
+  background: var(--gray);
+  padding: 1rem;
+  margin-left: 17px;
+  margin-top:20%;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.payment-card button{
+height: 2rem;
+width: 80%;
+margin-bottom: 0.5rem;
+margin-top:1rem ;
+margin: auto;
+}
+
+.order-items{
+  width: 100%;
+  height:90% ;
+  overflow-y:scroll;
+  background: var(--gray);
+}
+.order-total{
+  background: rgb(233, 227, 227);
+  height: 2rem;
+  width: 80%;
+  margin: auto;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/*////////////CONTACT PAGE/////////////*/
+.contact-section{
+  width: 70vw;
+  height: 60vh;
+  background: var(--black);
+  margin-top: 0.5rem;
+  margin-left: 13%;
+  margin-bottom: 0.5rem;
+  display: flex;
+}
+.contact-image{
+  width: 30%;
+  height: 100%;
+}
+.contact-image img{
+  height: 100%;
+  width: 100%;
+}
+.contact-form{
+  width: 70%;
+  height: 100%;
+  
+}
+.contact-inputs{
+  width: 97%;
+  height: 30%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-left: 1rem;
+}
+.contact-form input{
+  width: 45%;
+  height: 2rem;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid var(--neworange);
+  background: inherit;
+  color: white;
+}
+.contact-message{
+  width: 100%;
+  height: 65%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+}
+.contact-message textarea{
+  width: 91%;
+  height: 60%;
+  background: inherit;
+  border: 1px solid var(--neworange);
+  outline: none;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  
+}
+.contact-message button{
+  height: 2rem;
+  width: 50%;
+  margin-top: 1rem;
+}
