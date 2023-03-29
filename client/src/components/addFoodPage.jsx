@@ -1,54 +1,38 @@
-import { useState } from "react";
 import AdminBar from "./admin";
 import ReactImageFileToBase64 from "react-file-image-to-base64";
 
-const AddFoodPage=()=>{
-    const [images, setImages] = useState([]);
-    const [img1, setImg1] = useState('');
+const AddFoodPage=(props)=>{
 
-    const handleOnCompleted = files => {
-        setImages(files);
-        images.length<1?console.log("no file chosen"): setImg1(images[0].base64_file)
-        console.log(img1)
- 
-      };
-   
-      const [images2, setImages2] = useState([]);
-      const [img2, setImg2] = useState('');
+const{ handleOnCompleted,handleChange,foodname,price,desc,img1,img2,newFoodItem}=props  
 
-      const handleOnCompleted2 = files => {
-          setImages2(files);
-          images.length<1?console.log("no file chosen"): setImg2(images2[0].base64_file);
-          console.log(img2);
-   
-        };
 return(
+
     <div className="page">
      <AdminBar/>
      <h2 className="admin-heading">Create new dish</h2>
      <div className="admin-food-page">
         <div className="admin-food-images">
           <div className="admin-img1 adminimg">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhERHfLPJivEihBofpV7srogqfhq2SFMFgWA&usqp=CAU" alt="" />
+            <img src={img1} alt="" />
           </div>
-          <ReactImageFileToBase64 multiple={true} onCompleted={handleOnCompleted} />
+          <ReactImageFileToBase64 multiple={true} onCompleted={handleOnCompleted("img1")} />
           <div className="admin-img2 adminimg">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhERHfLPJivEihBofpV7srogqfhq2SFMFgWA&usqp=CAU" alt="" />
+            <img src={img2} alt="" />
           </div>
-          <ReactImageFileToBase64 multiple={true} onCompleted={handleOnCompleted2} />
+          <ReactImageFileToBase64 multiple={true} onCompleted={handleOnCompleted("img2")} />
         </div>
      
         <div className="admin-food-detail">
             <div className="food-name">
-                <input type="text" placeholder="set food name" className="admin-input"/>
+                <input type="text" placeholder="set food name" className="admin-input" value={foodname} onChange={handleChange("foodname")}/>
             </div>
           <div className="admin-food-desc">
-            <textarea placeholder="briefly describe the dish"></textarea>
+            <textarea placeholder="briefly describe the dish" value={desc} onChange={handleChange("desc")}></textarea>
           </div>
           <div className="admin-food-cost">
-            <input type="text" placeholder="set the price" className="admin-input"/>
+            <input type="text" placeholder="set the price" className="admin-input" value={price} onChange={handleChange("price")}/>
           </div>
-          <button className="admin-input">Add Food Item</button>
+          <button className="admin-input" onClick={newFoodItem}>Add Food Item</button>
         </div>
     </div>
    </div>

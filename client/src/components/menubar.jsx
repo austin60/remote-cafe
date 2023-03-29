@@ -1,5 +1,6 @@
 import { MdRestaurantMenu,MdOutlineFastfood,MdArrowDropDown,MdOutlineFreeBreakfast,MdOutlineLunchDining,MdOutlineLogin,
     MdOutlineDinnerDining,MdOutlineShoppingBasket,MdArrowDropUp,MdOutlineContactSupport,MdPersonOutline,MdLogout } from "react-icons/md";
+import{ NavLink} from 'react-router-dom';
 
 const MenuBar=()=>{
    const showDisplay=(idname)=>{
@@ -18,8 +19,8 @@ const MenuBar=()=>{
             </div>
             <div className="menu-items">
                 <ul>
-                    <li>Menu <MdRestaurantMenu className="menu-icon"/></li>
-                    <li>My Order<MdOutlineShoppingBasket className="menu-icon"/></li>
+                    <li><NavLink to="/"> Menu <MdRestaurantMenu className="menu-icon"/></NavLink></li>
+                    <li><NavLink to="/orders"> My Order<MdOutlineShoppingBasket className="menu-icon"/></NavLink></li>
                     <li onMouseEnter={()=>showDisplay("category")} onMouseLeave={()=>hideDisplay("category")}>
                         Category <MdArrowDropDown className="menu-icon"/>
                         <ul className="dropdown" id="category">
@@ -36,7 +37,7 @@ const MenuBar=()=>{
                              <li>Highest<MdArrowDropUp className="menu-icon"/></li>
                          </ul>
                     </li>
-                    <li>Contact Us<MdOutlineContactSupport className="menu-icon"/></li>
+                    <li><NavLink to="/contact" > Contact Us<MdOutlineContactSupport className="menu-icon"/></NavLink></li>
                     <li onMouseEnter={()=>showDisplay("account")}  onMouseLeave={()=>hideDisplay("account")}>
                         Account<MdArrowDropDown className="menu-icon"/>
                          <ul className="dropdown" id="account">

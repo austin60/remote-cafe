@@ -9,7 +9,7 @@ router.post('/post',async(req,res)=>{
         foodname:req.body.foodname,
         cost:req.body.cost,
         desc:req.body.desc,
-        type:req.body.type,
+       // type:req.body.type,
         img1:req.body.img1,
         img2:req.body.img2
     })

@@ -7,7 +7,7 @@ const orderSchema=mongoose.Schema({
     cost:{type:Number, require:true},
     phone:{type:String, require:true},
    // paid:{type:Boolean, require:true},
-    served:{type:Boolean, require:true},
+    served:{type:Boolean, default:false},
     date:{type:Boolean, default:Date.now},
 
 })

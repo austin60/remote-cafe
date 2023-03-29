@@ -98,6 +98,14 @@
   list-style: none;
   margin-right: 0.7rem;
 }
+ li a{
+  text-decoration: none;
+  color: black;
+}
+ .active{
+  color: white;
+  font-weight: 500;
+}
 .menu-icon{
   margin-left: 2px;
   bottom: -13px;
@@ -135,7 +143,7 @@
   justify-content: space-between;
   font-size: 14px;
   align-items: center;
-  bottom: 100%;
+  top: 100%;
 }
 .creator{
   width: 20%;

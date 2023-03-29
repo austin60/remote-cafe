@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const AdminBar=()=>{
     return(
         <div className="admin-bar">
@@ -8,7 +10,7 @@ const AdminBar=()=>{
                 <ul>
                     <li>Orders</li>
                     <li>Recieved</li>
-                    <li>Create</li>
+                    <li><NavLink to="/admin/create"> Create</NavLink></li>
 
                 </ul>
             </div>

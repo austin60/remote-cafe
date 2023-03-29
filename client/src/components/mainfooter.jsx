@@ -1,5 +1,6 @@
 import { FaTwitter,FaFacebookF,FaWhatsapp,FaPinterest,FaArrowRight } from "react-icons/fa";
 import { MdMailOutline,MdOutlineCopyright} from "react-icons/md";
+import { NavLink } from "react-router-dom";
 
 const MainFooter=()=>{
 return(
@@ -24,7 +25,7 @@ return(
                 <span>Home</span>
                 <span>Careers</span>
                 <span>About Us</span>
-                <span>Admin</span>
+                <span><NavLink to="/admin/create"> Admin</NavLink></span>
                 <span>Contacts</span>
             </div>
             <div className="newsletter">
