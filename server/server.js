@@ -13,7 +13,9 @@ const orderUrls=require("./routes/orderRoutes");
 
 //connect to mongodb
 mongoose.connect(process.env.DB_URL ,console.log("database connected"));
-app.use(bodyParser.json({}));
+//app.use(bodyParser.json({}));
+app.use(bodyParser.json({limit: '5mb'}));
+app.use(bodyParser.urlencoded({limit: '5mb', extended: true}));
 app.use(cors());
 
 //use Urls

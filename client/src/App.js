@@ -10,6 +10,8 @@ import axios from 'axios'
 
 class App extends Component{
   state={
+    data:[],
+    orders:[],
     //food model
     foodname:'',
     price:'',
@@ -17,9 +19,9 @@ class App extends Component{
     type:'',
     img1:'',
     img2:'',
-    images:[]
+    images:[],
 
-    /*/cust model
+    //cust model
     custname:'',
     phone:'',
     email:'',
@@ -28,7 +30,7 @@ class App extends Component{
     //fooditem
     food:'',
     quantity:1,
-    cost:0*/
+    cost:0
   }
 
 
@@ -46,7 +48,7 @@ class App extends Component{
   }
   //post new food data
   newFoodItem=()=>{
-    const{ foodname,price,desc,type,img1,img2}=this.state
+    const{ foodname,price,desc/*,type*/,img1,img2}=this.state
     const FoodItem={
       foodname:foodname,
       price:price,
@@ -55,16 +57,26 @@ class App extends Component{
       img2:img2,
     }
     console.log(FoodItem)
-    //axios.post("/post",FoodItem)
+    axios.post("http://localhost:5000/remotecafe/post",FoodItem);
+  }
+  addToOrder=(item)=>{
+    this.setState({orders:[...item]})
+  }
+  componentDidMount(){
+    axios.get("http://localhost:5000/remotecafe/")
+    .then(res=>{
+      this.setState({data:res.data},()=>console.log(this.state.data));
+    })
+    .catch(err=>console.log(err))
   }
   render(){
-    const{foodname,price,desc,type,img1,img2 /*,custname,phone,email,pass,food,quantity, cost*/}=this.state;
+    const{foodname,price,desc,type,img1,img2,data,quantity /*,custname,phone,email,pass,food, cost*/}=this.state;
   return (
    
     <div className="App">
        <Router>
         <Routes>
-          <Route path='/' element={<DisplayPage/>}/>
+          <Route path='/' element={<DisplayPage data={data}  quantity={ quantity}/>}/>
           <Route path='/contact' element={<ContactPage/>}/>
           <Route path='/orders' element={<OdersPage />}/>
           <Route path='/admin/create' element={<AddFoodPage foodname={foodname} price={price} desc={desc} type={type} 

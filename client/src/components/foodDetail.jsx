@@ -8,21 +8,22 @@ import { AiOutlineMinus } from "react-icons/ai";
 
 const FoodDetail = (props) => {
 
-
+  const{fopen,quantity}=props
   return (
+    
     <>
-      <Modal open={props.fopen} onClose={props.onFCloseModal} center>
+      <Modal open={fopen} onClose={props.onFCloseModal} center>
         <div className="food-detail">
-        <h2>Chicken Kebab</h2>
+        <h2>{fopen.foodname}</h2>
            <div className="food-info">
             <div className="food-image">
             <Carousel interval={2000} infiniteLoop={true}>
                 <div>
-                    <img src="https://img.freepik.com/free-photo/chicken-skewers-with-slices-sweet-peppers-dill_2829-18809.jpg?size=626&ext=jpg&ga=GA1.2.1380248698.1679665908&semt=ais" alt='foodname' />
+                    <img src={fopen.img1} alt='foodname' />
                   
                 </div>
                 <div>
-                    <img src="https://img.freepik.com/free-photo/chicken-skewers-with-slices-sweet-peppers-dill_2829-18813.jpg?size=626&ext=jpg&ga=GA1.2.1380248698.1679665908&semt=ais" alt='foodname' />
+                    <img src={fopen.img2} alt='foodname' />
                    
                 </div>
             </Carousel>
@@ -36,7 +37,7 @@ const FoodDetail = (props) => {
             </div>
             <div className="order-specs">
                 <button className='quant-btn minus'><AiOutlineMinus/></button>
-                <div className="quantity">2</div>
+                <div className="quantity">{quantity}</div>
                 <button className='quant-btn add'><MdAdd/></button>
             </div>
             <div className="order-cost">

@@ -105,6 +105,7 @@
  .active{
   color: white;
   font-weight: 500;
+  text-decoration: underline;
 }
 .menu-icon{
   margin-left: 2px;
