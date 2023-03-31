@@ -1,21 +1,24 @@
-const OrderItem=()=>{
+const OrderItem=(props)=>{
+    const {orders,addToOrder,removeFromOrder}=props;
     return(
-        <div className="order-item">
+        <>
+      {!orders?<div>Nothing yet</div>:orders.map(order=>(<div key={order._id} className="order-item">
             <div className="order-image">
-                <img src="https://img.freepik.com/free-photo/chicken-skewers-with-slices-sweet-peppers-dill_2829-18809.jpg?size=626&ext=jpg&ga=GA1.2.1380248698.1679665908&semt=ais" alt="" />
+                <img src={order.img1} alt="" />
             </div>
-            <div className="order-name">Chicken Kebab</div>
+            <div className="order-name">{order.foodname}</div>
             <div className="order-quant">
                 <button>-</button>
-                        2  
-                <button className="btn">+</button>
+                {order.count}
+                <button className="btn" onClick={()=>addToOrder(order)}>+</button>
             </div>
             <div className="order-price">
-                <b>Ksh 1,000</b>
+                <b>Ksh {order.price}</b>
             </div>
-            <button className="remove">Remove</button>
+            <button className="remove" onClick={()=>removeFromOrder(order)}>Remove</button>
 
-        </div>
+        </div>))}
+        </>
     )
 }
 export default OrderItem;

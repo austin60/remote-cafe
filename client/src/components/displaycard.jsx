@@ -2,7 +2,7 @@ import { useState } from "react";
 import FoodDetail from "./foodDetail";
 
 const DisplayCard=(props)=>{
-    const {data,quantity}=props
+    const {data,quantity,addToOrder}=props
 
     const [img,setImg]=useState(null);
     const [fopen, setFOpen] = useState(false);
@@ -19,13 +19,13 @@ return(
         <div className="info-display">
             <span className="food-title">{dataitem.foodname}</span>
             <span className="food-cost">Ksh {dataitem.price}</span>
-            <button onClick={()=>onFOpenModal(dataitem)}>go to order</button>
+            <button onClick={()=>onFOpenModal(dataitem)}>view details</button>
         </div>
 
     </div>
 ))}
     {
-        fopen &&  <FoodDetail onFCloseModal={onFCloseModal} fopen={fopen} quantity={quantity}/>
+        fopen &&  <FoodDetail onFCloseModal={onFCloseModal} fopen={fopen} quantity={quantity} addToOrder={addToOrder}/>
     }
     </>
 )

@@ -8,7 +8,7 @@ import { AiOutlineMinus } from "react-icons/ai";
 
 const FoodDetail = (props) => {
 
-  const{fopen,quantity}=props
+  const{fopen,quantity,addToOrder}=props
   return (
     
     <>
@@ -43,7 +43,7 @@ const FoodDetail = (props) => {
             <div className="order-cost">
                  <b>Total: Ksh{" "}</b>500
             </div>
-            <button className='order-btn input'>Add to Order</button>
+            <button className='order-btn input'onClick={()=>addToOrder(fopen)}>Add to Order</button>
         </div>
         </div>
         
