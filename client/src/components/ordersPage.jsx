@@ -3,7 +3,7 @@ import MenuBar from "./menubar";
 import PageFooter from "./pagefooter";
 
 const OdersPage=(props)=>{
-    const{removeFromOrder,orders,addToOrder}=props
+    const{removeFromOrder,orders,addToOrder,reduceOrder}=props
     return(
         <div className="page">
             <MenuBar/>
@@ -15,13 +15,14 @@ const OdersPage=(props)=>{
                         <span>Price</span>
                     </div>
                     <div className="order-items">
-                          <OrderItem  removeFromOrder={removeFromOrder} orders={orders} addToOrder={addToOrder}/>
+                          <OrderItem  removeFromOrder={removeFromOrder} orders={orders} addToOrder={addToOrder} reduceOrder={reduceOrder}/>
                     </div>
                 </div>
                 <div className="order-payment">
                     <div className="payment-card">
                         <h3>Total</h3>
-                        <span className="order-total">ksh 1000</span>
+                        <span className="order-total"><b> ksh {" "}
+                        {orders.reduce((a,c)=>a+c.price*c.count,0)}</b></span>
                         <button className="btn">Pay with M-Pesa</button>
                         <span>or</span>
                         <button className="btn">Pay on delivery</button>

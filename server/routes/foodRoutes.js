@@ -7,7 +7,7 @@ router.post('/post',async(req,res)=>{
   try{
     const foodData=new foodModel({
         foodname:req.body.foodname,
-        cost:req.body.cost,
+        price:req.body.price,
         desc:req.body.desc,
        // type:req.body.type,
         img1:req.body.img1,

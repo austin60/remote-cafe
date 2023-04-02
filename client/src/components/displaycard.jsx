@@ -25,7 +25,7 @@ return(
     </div>
 ))}
     {
-        fopen &&  <FoodDetail onFCloseModal={onFCloseModal} fopen={fopen} quantity={quantity} addToOrder={addToOrder}/>
+        fopen &&  <FoodDetail onFCloseModal={onFCloseModal} fopen={fopen} quantity={quantity} addToOrder={addToOrder} />
     }
     </>
 )

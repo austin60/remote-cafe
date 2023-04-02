@@ -11,7 +11,7 @@ import axios from 'axios'
 class App extends Component{
   state={
     data:[],
-    orders:[],
+    orders:localStorage.getItem("orders")?JSON.parse(localStorage.getItem("orders")):[],
     //food model
     foodname:'',
     price:'',
@@ -60,22 +60,6 @@ class App extends Component{
     axios.post("http://localhost:5000/remotecafe/post",FoodItem);
   }
 
- /*/add to order
- addToOrder=(item)=>{
-  const orders=this.state.orders;
-  //this.setState({orders:{...item,count:1}})
-  orders.push({...item,count:1});
-  this.setState({orders},()=>window.localStorage.setItem('orders', JSON.stringify(this.state.orders)));
-  
- }
-
- addQuantity=(item)=>{
-  item.count++
-  /* const index=this.state.orders.findIndex(order=>order.id===id);
-   const orders=[...this.state.orders];
-   orders[index]={...orders[index],count:orders[index]++}
-   console.log(item.count)
- }*/
  addToOrder=(product)=>{
    const orders=this.state.orders.slice();
    let alreadyInCart=false;
@@ -90,16 +74,24 @@ class App extends Component{
 
    if(!alreadyInCart){
      orders.push({...product,count:1});
-     this.setState({orders});
-     console.log("new item")
-     //localStorage.setItem('orders', JSON.stringify(this.state.orders))
    }
+   this.setState({orders},()=>localStorage.setItem('orders', JSON.stringify(this.state.orders)));
  }
+ reduceOrder=(product)=>{
+  const orders=this.state.orders.slice();
 
+  orders.forEach(order=>{
+    if(order._id===product._id){
+      if( order.count>1){
+        order.count--
+      };
+    }})
+    this.setState({orders},()=>localStorage.setItem('orders', JSON.stringify(this.state.orders)));
+ }
  removeFromOrder=(product)=>{
   const orders=this.state.orders.slice();
   const neworders=orders.filter(x=>x._id!==product._id);
-  this.setState({orders:neworders})
+  this.setState({orders:neworders},()=>localStorage.setItem('orders', JSON.stringify(neworders)))
  }
 
 
@@ -122,7 +114,7 @@ class App extends Component{
         <Routes>
           <Route path='/' element={<DisplayPage data={data}  quantity={quantity} addToOrder={this.addToOrder}/>}/>
           <Route path='/contact' element={<ContactPage/>}/>
-          <Route path='/orders' element={<OdersPage  orders={orders} addQuantity={this.addQuantity} addToOrder={this.addToOrder}
+          <Route path='/orders' element={<OdersPage  orders={orders} addToOrder={this.addToOrder} reduceOrder={this.reduceOrder}
                                 removeFromOrder={this.removeFromOrder}/>}/>
           <Route path='/admin/create' element={<AddFoodPage foodname={foodname} price={price} desc={desc} type={type} 
                   img1={img1} img2={img2} handleOnCompleted={this.handleOnCompleted} handleChange={this.handleChange}
