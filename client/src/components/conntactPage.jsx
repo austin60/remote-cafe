@@ -1,10 +1,13 @@
 import MenuBar from "./menubar";
 import MainFooter from "./mainfooter";
 
-const ContactPage=()=>{
+const ContactPage=(props)=>{
+
+    const{ handleChange,createAccount,custname,phone,email,pass1,pass2,lemail,lphone,accountLogin}=props
     return(
         <div className="page">
-            <MenuBar/>
+            <MenuBar handleChange={handleChange} createAccount={createAccount} custname={custname} phone={phone} 
+            email={email} pass1={pass1} pass2={pass2} lemail={lemail} lphone={lphone} accountLogin={accountLogin}/>
             <div className="contact-section">
                 <div className="contact-image">
                     <img src="https://www.signpost.com/wp-content/uploads/2021/11/call-center-customer-service-tips-scaled.jpeg" alt="" />

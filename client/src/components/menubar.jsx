@@ -1,8 +1,10 @@
-import { MdRestaurantMenu,MdOutlineFastfood,MdArrowDropDown,MdOutlineFreeBreakfast,MdOutlineLunchDining,MdOutlineLogin,
-    MdOutlineDinnerDining,MdOutlineShoppingBasket,MdArrowDropUp,MdOutlineContactSupport,MdPersonOutline,MdLogout } from "react-icons/md";
+import { useState } from "react";
+import { MdRestaurantMenu,MdArrowDropDown, MdOutlineLogin,MdOutlineShoppingBasket,MdArrowDropUp,
+    MdOutlineContactSupport,MdPersonOutline,MdLogout } from "react-icons/md";
 import{ NavLink} from 'react-router-dom';
+import AccountLogs from "./accountlog";
 
-const MenuBar=()=>{
+const MenuBar=(props)=>{
    const showDisplay=(idname)=>{
     let x=document.getElementById(idname)
     x.style.display="block"
@@ -12,7 +14,18 @@ const MenuBar=()=>{
     x.style.display="none"
    }
 
+   const [open, setOpen] = useState(false);
+   const [open2, setOpen2] = useState(false);
+ 
+   const onOpenModal = () => setOpen(true);
+   const onCloseModal = () => setOpen(false);
+ 
+   const onOpenModal2 = () => setOpen2(true);
+   const onCloseModal2 = () => {setOpen2(false);setOpen(false)}
+
+   const{custname,phone,email,pass1,pass2,handleChange,createAccount,lemail,lphone,accountLogin}=props
     return(
+        <>
         <div className="menubar">
             <div className="icon">
                 <span>RC</span>
@@ -21,15 +34,6 @@ const MenuBar=()=>{
                 <ul>
                     <li><NavLink to="/"> Menu <MdRestaurantMenu className="menu-icon"/></NavLink></li>
                     <li><NavLink to="/orders"> My Order<MdOutlineShoppingBasket className="menu-icon"/></NavLink></li>
-                    <li onMouseEnter={()=>showDisplay("category")} onMouseLeave={()=>hideDisplay("category")}>
-                        Category <MdArrowDropDown className="menu-icon"/>
-                        <ul className="dropdown" id="category">
-                             <li>Breakfast<MdOutlineFreeBreakfast className="menu-icon"/></li>
-                             <li>Lunch<MdOutlineLunchDining className="menu-icon"/></li>
-                             <li>Dinner<MdOutlineDinnerDining className="menu-icon"/></li>
-                             <li>Snacks<MdOutlineFastfood className="menu-icon"/></li>
-                        </ul>
-                    </li>
                     <li onMouseEnter={()=>showDisplay("price")} onMouseLeave={()=>hideDisplay("price")}>
                         Price <MdArrowDropDown className="menu-icon"/>
                          <ul className="dropdown" id="price">
@@ -41,7 +45,7 @@ const MenuBar=()=>{
                     <li onMouseEnter={()=>showDisplay("account")}  onMouseLeave={()=>hideDisplay("account")}>
                         Account<MdArrowDropDown className="menu-icon"/>
                          <ul className="dropdown" id="account">
-                             <li>LogIn<MdOutlineLogin className="menu-icon"/></li>
+                             <li onClick={onOpenModal}>LogIn<MdOutlineLogin className="menu-icon"/></li>
                              <li>LogOut<MdLogout className="menu-icon"/></li>
                              <li>Profile<MdPersonOutline className="menu-icon" /></li>
                          </ul>
@@ -49,6 +53,11 @@ const MenuBar=()=>{
                 </ul>
             </div>
         </div>
+        <AccountLogs open={open} open2={open2} onOpenModal={onOpenModal} onCloseModal={onCloseModal}
+        onCloseModal2={onCloseModal2} onOpenModal2={onOpenModal2} custname={custname} phone={phone}
+        email={email} pass1={pass1} pass2={pass2} handleChange={handleChange} createAccount={createAccount}
+        lemail={lemail} lphone={lphone} accountLogin={accountLogin}/>
+        </>
     )
 }
 

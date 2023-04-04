@@ -21,6 +21,17 @@ router.post("/signup",async(req,res)=>{
     }
 })
 
+router.post("/client",async(req,res)=>{
+    try{
+        const {phone,email}=req.body
+        const client= await customerModel.find({phone:phone,email:email});
+        res.status(201).json(client)
+        console.log(client)
+    }
+    catch(err){
+        res.status(401).json({message:err.message})
+    }
+})
 //read data
 router.get("/customers",async(req,res)=>{
     try{

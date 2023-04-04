@@ -25,7 +25,12 @@ class App extends Component{
     custname:'',
     phone:'',
     email:'',
-    pass:'',
+    pass1:'',
+    pass2:'',
+    
+    //cust log
+    lemail:'',
+    lphone:'',
 
     //fooditem
     food:'',
@@ -93,7 +98,65 @@ class App extends Component{
   const neworders=orders.filter(x=>x._id!==product._id);
   this.setState({orders:neworders},()=>localStorage.setItem('orders', JSON.stringify(neworders)))
  }
+accountLogin=()=>{
+  const{lphone,lemail}=this.state
 
+  if(lphone!=='' && lemail !==''){
+    const client={
+      phone:lphone,
+      email:lemail
+    }
+    axios.post("http://localhost:5000/remotecafe/client",client)
+  }
+ else{
+  const element=document.getElementById('err');
+  element.innerHTML="fill all fields"
+ }
+
+}
+createAccount=()=>{
+  const{ custname,phone,email,pass1,pass2}=this.state;
+  const numbers=/[\d]/g;
+  const letters=/[\D]/gi;
+  const validEmail=/[a-zA-Z0-9_\-.]+[@][a-z]+[.][a-z]{2,3}/g;
+  const validPass=/[A-Z0-9]/g;
+
+  const element=document.getElementById('error');
+  if(custname===""||phone===""||email===""||pass1===""){
+    element.innerHTML='*fill all fields'
+  }
+  else if(numbers.test(custname)){
+    element.innerHTML='*avoid numbers in name field'
+  }
+  else if(letters.test(phone)||phone.length<10){
+    element.innerHTML='*enter valid mobile number'
+  }
+  else if(!validEmail.test(email)){
+    element.innerHTML='*enter valid email'
+  }
+  else if(pass1.length<8){
+    element.innerHTML='*password set to a minimum of 8 characters'
+  }
+  else if(pass2!==pass1){
+    element.innerHTML='*password mismatch'
+  }
+  else if(!validPass.test(pass2)){
+    element.innerHTML='*password should have atleast one capital letter and number'
+  }
+  else{
+    const newCust={
+      name:custname,
+      phone:phone,
+      email:email,
+      pass:pass2
+    }
+    axios.post("http://localhost:5000/remotecafe/signup",newCust)
+    console.log(newCust)
+  } 
+    
+ 
+
+ }
 
   componentDidMount(){
     axios.get("http://localhost:5000/remotecafe/")
@@ -103,19 +166,24 @@ class App extends Component{
     .catch(err=>console.log(err))
 
    
+     
     //console.log(this.state.orders)
   }
   render(){
-    const{foodname,price,desc,type,img1,img2,data,quantity,orders /*,custname,phone,email,pass,food, cost*/}=this.state;
+    const{foodname,price,desc,type,img1,img2,data,orders,custname,phone,email,pass1,pass2,lphone,lemail}=this.state;
   return (
    
     <div className="App">
        <Router>
         <Routes>
-          <Route path='/' element={<DisplayPage data={data}  quantity={quantity} addToOrder={this.addToOrder}/>}/>
-          <Route path='/contact' element={<ContactPage/>}/>
+          <Route path='/' element={<DisplayPage data={data} addToOrder={this.addToOrder} handleChange={this.handleChange}
+              custname={custname} phone={phone} email={email} pass1={pass1} pass2={pass2} createAccount={this.createAccount}
+              lphone={lphone} lemail={lemail} accountLogin={this.accountLogin}/>}/>
+          <Route path='/contact' element={<ContactPage handleChange={this.handleChange} createAccount={this.createAccount} 
+                    custname={custname} phone={phone} email={email} pass1={pass1} pass2={pass2} lphone={lphone} lemail={lemail}
+                    accountLogin={this.accountLogin}/>}/>
           <Route path='/orders' element={<OdersPage  orders={orders} addToOrder={this.addToOrder} reduceOrder={this.reduceOrder}
-                                removeFromOrder={this.removeFromOrder}/>}/>
+                                removeFromOrder={this.removeFromOrder} accountLogin={this.accountLogin}/>}/>
           <Route path='/admin/create' element={<AddFoodPage foodname={foodname} price={price} desc={desc} type={type} 
                   img1={img1} img2={img2} handleOnCompleted={this.handleOnCompleted} handleChange={this.handleChange}
                   newFoodItem={this.newFoodItem}/>}/>
