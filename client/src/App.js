@@ -65,7 +65,7 @@ class App extends Component{
       img2:img2,
     }
     console.log(FoodItem)
-    axios.post("http://localhost:5000/remotecafe/post",FoodItem);
+    axios.post("/remotecafe/post",FoodItem);
   }
 
 
@@ -110,7 +110,7 @@ accountLogin=()=>{
       phone:lphone,
       email:lemail
     }
-    axios.post("http://localhost:5000/remotecafe/client",client)
+    axios.post("/remotecafe/client",client)
     .then(res=>this.setState({client:res.data},()=>{
       sessionStorage.setItem('userphone',JSON.stringify(this.state.client[0].phone));
     }))
@@ -157,7 +157,7 @@ createAccount=()=>{
       email:email,
       pass:pass2
     }
-    axios.post("http://localhost:5000/remotecafe/signup",newCust)
+    axios.post("/remotecafe/signup",newCust)
     console.log(newCust)
   } 
     
@@ -169,12 +169,12 @@ makeOrder=()=>{
     phone:pphone,
     amount:amount
   }
-   axios.post("http://localhost:5000/token",payment)
+   axios.post("/token",payment)
     
  }
 
   componentDidMount(){
-    axios.get("http://localhost:5000/remotecafe/")
+    axios.get("/remotecafe/")
     .then(res=>{
       this.setState({data:res.data});
     })

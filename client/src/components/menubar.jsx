@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MdRestaurantMenu,MdArrowDropDown, MdOutlineLogin,MdOutlineShoppingBasket,MdArrowDropUp,
-    MdOutlineContactSupport,MdPersonOutline,MdLogout } from "react-icons/md";
+    MdOutlineContactSupport,MdLogout } from "react-icons/md";
 import{ NavLink} from 'react-router-dom';
 import AccountLogs from "./accountlog";
 
