@@ -3,10 +3,10 @@ import MenuBar from "./menubar";
 import PageFooter from "./pagefooter";
 
 const OdersPage=(props)=>{
-    const{removeFromOrder,orders,addToOrder,reduceOrder}=props
+    const{removeFromOrder,orders,addToOrder,reduceOrder,handleChange,makeOrder}=props
     return(
         <div className="page">
-            <MenuBar/>
+            <MenuBar handleChange={handleChange}/>
             <div className="oders-dispay">
                 <div className="order-list">
                     <div className="order-title">
@@ -22,8 +22,9 @@ const OdersPage=(props)=>{
                     <div className="payment-card">
                         <h3>Total</h3>
                         <span className="order-total"><b> ksh {" "}
-                        {orders.reduce((a,c)=>a+c.price*c.count,0)}</b></span>
-                        <button className="btn">Pay with M-Pesa</button>
+                        {orders.reduce((a,c)=>a+c.price*c.count,0)}
+                        { sessionStorage.setItem('amount',JSON.stringify(orders.reduce((a,c)=>a+c.price*c.count,0))) }</b></span>
+                        <button className="btn" onClick={makeOrder}>Pay with M-Pesa</button>
                         <span>or</span>
                         <button className="btn">Pay on delivery</button>
                     </div>

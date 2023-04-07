@@ -47,7 +47,6 @@ const MenuBar=(props)=>{
                          <ul className="dropdown" id="account">
                              <li onClick={onOpenModal}>LogIn<MdOutlineLogin className="menu-icon"/></li>
                              <li>LogOut<MdLogout className="menu-icon"/></li>
-                             <li>Profile<MdPersonOutline className="menu-icon" /></li>
                          </ul>
                     </li>
                 </ul>

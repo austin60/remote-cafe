@@ -31,7 +31,10 @@ class App extends Component{
     //cust log
     lemail:'',
     lphone:'',
-
+    client:[],
+    pphone:sessionStorage.getItem('userphone')||'',
+    //amount:sessionStorage.getItem('amount')||'',
+    amount:1,
     //fooditem
     food:'',
     quantity:1,
@@ -64,6 +67,7 @@ class App extends Component{
     console.log(FoodItem)
     axios.post("http://localhost:5000/remotecafe/post",FoodItem);
   }
+
 
  addToOrder=(product)=>{
    const orders=this.state.orders.slice();
@@ -107,7 +111,10 @@ accountLogin=()=>{
       email:lemail
     }
     axios.post("http://localhost:5000/remotecafe/client",client)
-  }
+    .then(res=>this.setState({client:res.data},()=>{
+      sessionStorage.setItem('userphone',JSON.stringify(this.state.client[0].phone));
+    }))
+    .catch(err=>console.log(err))  }
  else{
   const element=document.getElementById('err');
   element.innerHTML="fill all fields"
@@ -154,8 +161,16 @@ createAccount=()=>{
     console.log(newCust)
   } 
     
- 
+ }
 
+makeOrder=()=>{
+  const{ pphone,amount}=this.state
+  const payment={
+    phone:pphone,
+    amount:amount
+  }
+   axios.post("http://localhost:5000/token",payment)
+    
  }
 
   componentDidMount(){
@@ -165,9 +180,6 @@ createAccount=()=>{
     })
     .catch(err=>console.log(err))
 
-   
-     
-    //console.log(this.state.orders)
   }
   render(){
     const{foodname,price,desc,type,img1,img2,data,orders,custname,phone,email,pass1,pass2,lphone,lemail}=this.state;
@@ -183,7 +195,7 @@ createAccount=()=>{
                     custname={custname} phone={phone} email={email} pass1={pass1} pass2={pass2} lphone={lphone} lemail={lemail}
                     accountLogin={this.accountLogin}/>}/>
           <Route path='/orders' element={<OdersPage  orders={orders} addToOrder={this.addToOrder} reduceOrder={this.reduceOrder}
-                                removeFromOrder={this.removeFromOrder} accountLogin={this.accountLogin}/>}/>
+                                removeFromOrder={this.removeFromOrder} accountLogin={this.accountLogin} handleChange={this.handleChange} makeOrder={this.makeOrder}/>}/>
           <Route path='/admin/create' element={<AddFoodPage foodname={foodname} price={price} desc={desc} type={type} 
                   img1={img1} img2={img2} handleOnCompleted={this.handleOnCompleted} handleChange={this.handleChange}
                   newFoodItem={this.newFoodItem}/>}/>
