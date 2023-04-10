@@ -2,6 +2,7 @@ import DisplayCard from "./displaycard";
 import MenuBar from "./menubar";
 import PageFooter from "./pagefooter";
 
+
 const DisplayPage=(props)=>{
     const {data,quantity,addToOrder,custname,phone,email,pass1,pass2,handleChange,createAccount,lphone,lemail,accountLogin}=props
    return(
@@ -15,5 +16,6 @@ const DisplayPage=(props)=>{
     </div>
    ) 
 }
+
 
 export default DisplayPage;

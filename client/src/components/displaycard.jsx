@@ -1,8 +1,15 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import FoodDetail from "./foodDetail";
+import { fetchData } from "../redux/actions/productActions";
+import { connect} from "react-redux";
+
+
+
 
 const DisplayCard=(props)=>{
-    const {data,quantity,addToOrder}=props
+   useEffect(()=>fetchData(),[])
+
+    const {data,addToOrder}=props
 
     const [img,setImg]=useState(null);
     const [fopen, setFOpen] = useState(false);
@@ -25,9 +32,22 @@ return(
     </div>
 ))}
     {
-        fopen &&  <FoodDetail onFCloseModal={onFCloseModal} fopen={fopen} quantity={quantity} addToOrder={addToOrder} />
+        fopen &&  <FoodDetail onFCloseModal={onFCloseModal} fopen={fopen} addToOrder={addToOrder} />
     }
     </>
 )
 }
-export default DisplayCard;
+
+const mapStateToProps=state=>{
+    return{
+        data:state.data
+    }
+}
+
+const mapDispatchToProps=dispatch=>{
+    return{
+      fetchProducts:dispatch(fetchData())
+      
+    }
+  }
+export default connect(mapStateToProps ,mapDispatchToProps) (DisplayCard);
