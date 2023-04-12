@@ -1,6 +1,7 @@
 import OrderItem from "./oderItem";
 import MenuBar from "./menubar";
 import PageFooter from "./pagefooter";
+import { connect } from "react-redux";
 
 
 
@@ -39,4 +40,10 @@ const OdersPage=(props)=>{
    
 }
 
-export default OdersPage;
+const mapStateToProps=state=>{
+    return{
+        orders:state.orders
+    }
+}
+
+export default connect (mapStateToProps,null)(OdersPage);
