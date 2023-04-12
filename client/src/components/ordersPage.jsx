@@ -2,8 +2,10 @@ import OrderItem from "./oderItem";
 import MenuBar from "./menubar";
 import PageFooter from "./pagefooter";
 
+
+
 const OdersPage=(props)=>{
-    const{removeFromOrder,orders,addToOrder,reduceOrder,handleChange,makeOrder}=props
+    const{orders,handleChange,makeOrder}=props
     return(
         <div className="page">
             <MenuBar handleChange={handleChange}/>
@@ -15,7 +17,7 @@ const OdersPage=(props)=>{
                         <span>Price</span>
                     </div>
                     <div className="order-items">
-                          <OrderItem  removeFromOrder={removeFromOrder} orders={orders} addToOrder={addToOrder} reduceOrder={reduceOrder}/>
+                          <OrderItem />
                     </div>
                 </div>
                 <div className="order-payment">
@@ -33,5 +35,8 @@ const OdersPage=(props)=>{
            <PageFooter/>
         </div>
     )
+
+   
 }
+
 export default OdersPage;

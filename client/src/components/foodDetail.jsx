@@ -3,6 +3,8 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import { connect } from 'react-redux';
+import { addToOrder } from '../redux/actions/orderActions';
 
 const FoodDetail = (props) => {
 
@@ -46,4 +48,10 @@ const FoodDetail = (props) => {
     </>
   );
 };
-export default FoodDetail;
+
+const mapDispatchToProps=(dispatch)=>{
+ return{
+  addToOrder:(orders)=>dispatch(addToOrder(orders))
+ }
+}
+export default connect(null,mapDispatchToProps)(FoodDetail);

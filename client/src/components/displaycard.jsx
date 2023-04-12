@@ -50,4 +50,4 @@ const mapDispatchToProps=dispatch=>{
       
     }
   }
-export default connect(mapStateToProps ,mapDispatchToProps) (DisplayCard);
+export default connect(mapStateToProps ,mapDispatchToProps)(DisplayCard);

@@ -10,7 +10,7 @@ import axios from 'axios'
 
 class App extends Component{
   state={
-    data:[],
+   // data:[],
     orders:localStorage.getItem("orders")?JSON.parse(localStorage.getItem("orders")):[],
     //food model
     foodname:'',
@@ -33,8 +33,8 @@ class App extends Component{
     lphone:'',
     client:[],
     pphone:sessionStorage.getItem('userphone')||'',
-    //amount:sessionStorage.getItem('amount')||'',
-    amount:1,
+    //amount:sessionStorage.getItem('amount')||'', un-comment to get actual cost
+    amount:1,  //set for test purpose
     //fooditem
     food:'',
     quantity:1,
@@ -68,40 +68,6 @@ class App extends Component{
     axios.post("/remotecafe/post",FoodItem);
   }
 
-
- addToOrder=(product)=>{
-   const orders=this.state.orders.slice();
-   let alreadyInCart=false;
-
-   orders.forEach(order => {
-     if(order._id===product._id){
-        order.count++;
-        alreadyInCart=true;
-        console.log("count added")
-     }
-   });
-
-   if(!alreadyInCart){
-     orders.push({...product,count:1});
-   }
-   this.setState({orders},()=>localStorage.setItem('orders', JSON.stringify(this.state.orders)));
- }
- reduceOrder=(product)=>{
-  const orders=this.state.orders.slice();
-
-  orders.forEach(order=>{
-    if(order._id===product._id){
-      if( order.count>1){
-        order.count--
-      };
-    }})
-    this.setState({orders},()=>localStorage.setItem('orders', JSON.stringify(this.state.orders)));
- }
- removeFromOrder=(product)=>{
-  const orders=this.state.orders.slice();
-  const neworders=orders.filter(x=>x._id!==product._id);
-  this.setState({orders:neworders},()=>localStorage.setItem('orders', JSON.stringify(neworders)))
- }
 accountLogin=()=>{
   const{lphone,lemail}=this.state
 
@@ -173,14 +139,6 @@ makeOrder=()=>{
     
  }
 
-  componentDidMount(){
-    axios.get("/remotecafe/")
-    .then(res=>{
-      this.setState({data:res.data});
-    })
-    .catch(err=>console.log(err))
-
-  }
   render(){
     const{foodname,price,desc,type,img1,img2,data,orders,custname,phone,email,pass1,pass2,lphone,lemail}=this.state;
   return (

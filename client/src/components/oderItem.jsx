@@ -1,5 +1,8 @@
+import { connect } from "react-redux";
+import { addToOrder, reduceOrder, removeFromOrders } from "../redux/actions/orderActions";
+
 const OrderItem=(props)=>{
-    const {orders,addToOrder,removeFromOrder,reduceOrder}=props;
+    const {orders,addToOrder,removeFromOrders,reduceOrder}=props;
     return(
         <>
       {!orders?<div>Nothing yet</div>:orders.map(order=>(<div key={order._id} className="order-item">
@@ -15,10 +18,27 @@ const OrderItem=(props)=>{
             <div className="order-price">
                 Ksh {order.price*order.count}
             </div>
-            <button className="remove" onClick={()=>removeFromOrder(order)}>Remove</button>
+            <button className="remove" onClick={()=>removeFromOrders(order)}>Remove</button>
 
         </div>))}
         </>
     )
 }
-export default OrderItem;
+
+const mapStateToProps=state=>{
+    return{
+        orders:state.orders
+    }
+}
+const mapDispatchToProps=dispatch=>{
+    return{
+        removeFromOrders:(orders)=>dispatch( removeFromOrders(orders)),
+        addToOrder:(orders)=>dispatch(addToOrder(orders)),
+        reduceOrder:(orders)=>dispatch(reduceOrder(orders))
+
+    }
+}
+
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(OrderItem);
