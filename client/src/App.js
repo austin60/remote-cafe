@@ -11,7 +11,7 @@ import axios from 'axios'
 class App extends Component{
   state={
    // data:[],
-    orders:localStorage.getItem("orders")?JSON.parse(localStorage.getItem("orders")):[],
+    //orders:localStorage.getItem("orders")?JSON.parse(localStorage.getItem("orders")):[],
     //food model
     foodname:'',
     price:'',
@@ -53,19 +53,6 @@ class App extends Component{
   //handle change
   handleChange=input=>e=>{
     this.setState({[input]:e.target.value})
-  }
-  //post new food data
-  newFoodItem=()=>{
-    const{ foodname,price,desc/*,type*/,img1,img2}=this.state
-    const FoodItem={
-      foodname:foodname,
-      price:price,
-      desc: desc,
-      img1: img1,
-      img2:img2,
-    }
-    console.log(FoodItem)
-    axios.post("/remotecafe/post",FoodItem);
   }
 
 accountLogin=()=>{
@@ -130,30 +117,40 @@ createAccount=()=>{
  }
 
 makeOrder=()=>{
-  const{ pphone,amount}=this.state
+  const{ pphone,amount,orders}=this.state
   const payment={
     phone:pphone,
     amount:amount
   }
    axios.post("/token",payment)
+
+   const Order={
+    phone:pphone,
+    order:orders
+   }
+
+   axios.post("/make-order",Order)
     
  }
 
+ componentDidMount(){
+  console.log(this.state.orders)
+ }
+
   render(){
-    const{foodname,price,desc,type,img1,img2,data,orders,custname,phone,email,pass1,pass2,lphone,lemail}=this.state;
+    const{foodname,price,desc,type,img1,img2,custname,phone,email,pass1,pass2,lphone,lemail}=this.state;
   return (
    
     <div className="App">
        <Router>
         <Routes>
-          <Route path='/' element={<DisplayPage data={data} addToOrder={this.addToOrder} handleChange={this.handleChange}
+          <Route path='/' element={<DisplayPage handleChange={this.handleChange}
               custname={custname} phone={phone} email={email} pass1={pass1} pass2={pass2} createAccount={this.createAccount}
               lphone={lphone} lemail={lemail} accountLogin={this.accountLogin}/>}/>
           <Route path='/contact' element={<ContactPage handleChange={this.handleChange} createAccount={this.createAccount} 
                     custname={custname} phone={phone} email={email} pass1={pass1} pass2={pass2} lphone={lphone} lemail={lemail}
                     accountLogin={this.accountLogin}/>}/>
-          <Route path='/orders' element={<OdersPage  orders={orders} addToOrder={this.addToOrder} reduceOrder={this.reduceOrder}
-                                removeFromOrder={this.removeFromOrder} accountLogin={this.accountLogin} handleChange={this.handleChange} makeOrder={this.makeOrder}/>}/>
+          <Route path='/orders' element={<OdersPage accountLogin={this.accountLogin} handleChange={this.handleChange} makeOrder={this.makeOrder}/>}/>
           <Route path='/admin/create' element={<AddFoodPage foodname={foodname} price={price} desc={desc} type={type} 
                   img1={img1} img2={img2} handleOnCompleted={this.handleOnCompleted} handleChange={this.handleChange}
                   newFoodItem={this.newFoodItem}/>}/>

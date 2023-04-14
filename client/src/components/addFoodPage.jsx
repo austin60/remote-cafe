@@ -1,9 +1,11 @@
 import AdminBar from "./admin";
 import ReactImageFileToBase64 from "react-file-image-to-base64";
+import { connect } from "react-redux";
+import { newFoodItem } from "../redux/actions/axiospostActions";
 
 const AddFoodPage=(props)=>{
 
-const{ handleOnCompleted,handleChange,foodname,price,desc,img1,img2,newFoodItem}=props  
+const{ handleOnCompleted,handleChange,foodname,price,desc,img1,img2,/*newFoodItem*/}=props  
 
 return(
 
@@ -32,10 +34,16 @@ return(
           <div className="admin-food-cost">
             <input type="text" placeholder="set the price" className="admin-input" value={price} onChange={handleChange("price")}/>
           </div>
-          <button className="admin-input" onClick={newFoodItem}>Add Food Item</button>
+          <button className="admin-input" onClick={newFoodItem(foodname,price,desc,img1,img2)}>Add Food Item</button>
         </div>
     </div>
    </div>
 )
 }
-export default AddFoodPage;
+
+const mapDispatchToProps=dispatch=>{
+  return{
+    newFoodItem:(foodname,price,desc,img1,img2)=>dispatch(newFoodItem(foodname,price,desc,img1,img2))
+  }
+}
+export default connect(null,mapDispatchToProps) (AddFoodPage);

@@ -6,13 +6,8 @@ const orderModel=require("../models/ordersModel");
 router.post("/make-order",async(req,res)=>{
     try{
        const Order= new orderModel({
-        foodname:req.body.foodname,
-        quantity:req.body.quantity,
-        spicy:req.body.spicy,
-        cost:req.body.cost,
-        phone:req.body.phone,
-       // paid:req.body.paid,
-        served:req.body.served
+       phone:req.body.phone,
+       order:req.body.order
        })
 
        await Order.save();
