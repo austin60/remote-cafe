@@ -9,7 +9,6 @@ const DisplayCard=(props)=>{
 
     const {data,addToOrder}=props
 
-    const [img,setImg]=useState(null);
     const [fopen, setFOpen] = useState(false);
 
     const onFOpenModal = (data) => setFOpen(data);
