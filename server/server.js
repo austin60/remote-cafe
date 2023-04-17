@@ -4,6 +4,7 @@ const cors =require ("cors");
 const bodyParser= require("body-parser");
 const app=express();
 require("dotenv").config();
+const path=require("path")
 
 //url routes
 const adminUrls=require("./routes/adminRoute");
@@ -27,6 +28,15 @@ app.use("/remotecafe",customerUrls);
 app.use("/remotecafe",foodUrls);
 app.use("/remotecafe",orderUrls);
 app.use("/token",tokenUrl);
+
+//production
+if (process.env.NODE_ENV === 'production') {
+    //*Set static folder
+    app.use(express.static('client/build'));
+    
+    app.get('*', (req,res) => res.sendFile(path.resolve(__dirname, 'client', 'build','index.html')));
+  }
+
 //serve 
 const port =process.env.PORT||5000;
 app.listen(port,console.log(`serving at port ${port}`))

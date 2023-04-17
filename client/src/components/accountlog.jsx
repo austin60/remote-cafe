@@ -24,14 +24,15 @@ const AccountLogs = (props) => {
         <h2 className='su'>Create Account <MdPersonAddAlt/></h2>
         <input type="text" placeholder='*name' className='input' value={custname} onChange={handleChange("custname")}/>
         <input type="text" placeholder='*phone ' className='input' value={phone} onChange={handleChange("phone")}/>
-        <input type="text" placeholder='*email' className='input'value={email} onChange={handleChange("email")}/>
-        <input type="text" placeholder='*new password' className='input'value={pass1} onChange={handleChange("pass1")}/>
-        <input type="text" placeholder='*confirm password' className='input'value={pass2} onChange={handleChange("pass2")}/>
-        <button className='input'onClick={createAccount}>Sign Up</button>
+        <input type="email" placeholder='*email' className='input'value={email} onChange={handleChange("email")}/>
+        <input type="password" placeholder='*new password' className='input'value={pass1} onChange={handleChange("pass1")}/>
+        <input type="password" placeholder='*confirm password' className='input' value={pass2} onChange={handleChange("pass2")}/>
+        <button className='input'onClick={()=>createAccount()}>Sign Up</button>
         <span className='error-message' id='error'>*private infomation will not be shared</span>
         </div>
       </Modal>
     </div>
   );
 };
+
 export default AccountLogs;

@@ -5,7 +5,7 @@ import { newFoodItem } from "../redux/actions/axiospostActions";
 
 const AddFoodPage=(props)=>{
 
-const{ handleOnCompleted,handleChange,foodname,price,desc,img1,img2,/*newFoodItem*/}=props  
+const{ handleOnCompleted,handleChange,foodname,price,desc,img1,img2}=props  
 
 return(
 

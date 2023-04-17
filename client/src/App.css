@@ -36,7 +36,6 @@
   width: 98%;
   height: 75%;
   margin:auto;
-  
 }
 .image-display img{
   height: 100%;
@@ -76,7 +75,44 @@
 .display-card:hover{
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
+@media only screen and (max-width: 415px) {
+  .display-card{
+    width: 10rem;
+    height: 19rem;
+    margin-top: 10px;
+    margin-left: 0px;
+    margin-bottom: 0.5rem;
+  }
 
+  .info-display{
+    font-size: 14px;
+    margin: 2px;
+  }
+  .info-display span{
+    margin-left: 5px;
+  }
+  .info-display button{
+    height: 1.8rem;
+    margin-top: 0.1rem;
+  }
+  
+}
+@media only screen and (max-width:1280px) {
+  .display-card{
+    width: 16rem;
+    height: 22rem;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 0.5rem;
+  }
+
+}
+@media only screen and (max-width:1194px) {
+  .display-card{
+    width: 18rem;
+    height: 23rem;
+  }
+}
 /*/////menu-items*/
 .menubar{
   position: sticky;
@@ -131,6 +167,34 @@
 #account{
   display: none;
 }
+@media only screen and (max-width: 415px) {
+  .menu-items{
+    width: 90%;
+  }
+  .menu-items ul li{
+    font-size: 13px;
+    margin-right: 4px;
+  }
+}
+@media only screen and (max-width: 1280px) {
+  .menu-items{
+    width: 33%;
+  }
+  .menu-items ul li{
+    font-size: 14px;
+    margin-right: 12px;
+  }
+}
+@media only screen and (max-width: 1194px) {
+  .menu-items{
+    width: 55%;
+  }
+  .menu-items ul li{
+    font-size: 14px;
+    margin-right: 14px;
+  }
+}
+
 
 /*////page-footer*/
 .page-footer{
@@ -152,7 +216,24 @@
 .creator a{
   color: black;
 }
-
+@media only screen and (max-width: 415px) {
+  .page-footer{
+    font-size: 11px;
+    justify-content: space-around;
+  }
+  .creator{
+    width: 30%;
+  }
+}
+@media only screen and (max-width: 1280px) {
+  .page-footer{
+    font-size: 13px;
+    justify-content: space-between;
+  }
+  .creator{
+    width: 10%;
+  }
+}
 
 
 /*/////////main footer////*/
@@ -238,6 +319,38 @@
   border-bottom: 1px solid var(--gray);
   width: 70%;
 }
+@media only screen and (max-width: 415px) {
+  .footer-info{
+  display: flex;
+  flex-direction: column;
+}
+.company-stament{
+  width: 90%;
+}
+.location{
+  width: 90%;
+}
+.newsletter{
+  width: 70%;
+}
+.footer-info{
+  margin-left: 3rem;
+}
+}
+@media only screen and (max-width: 1194px) {
+  .footer-info{
+    width: 90%;
+  }
+  .location{
+    background: blue;
+    width: 30%;
+  }
+  .newsletter{
+    width: 70%;
+    background: red;
+  }
+
+}
 
 /*/////////LOG MODALS////////*/
 .logmodal{
@@ -273,11 +386,18 @@
   color: rgb(201, 6, 6);
 }
 
-
+@media only screen and (max-width: 415px) {
+  .logmodal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80vw;
+  }
+}
 
 /*//////food-detail///////*/
 .food-detail{
-  width: 60vw;
+  width: 50vw;
 }
 .food-detail h2{
   margin-bottom: 2rem;
@@ -344,6 +464,12 @@
   background: var(--orange);
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+@media only screen and (max-width: 415px) {
+  .food-detail{
+    width: 80vw;
+  }
 }
 
 /*/////////admin-menu-items////////*/
@@ -448,6 +574,22 @@ box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   background: var(--orange);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+@media only screen and (max-width: 415px) {
+  .display-page{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+@media only screen and (max-width: 1280px) {
+  .display-page{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.7rem;
+  }
+}
 
 /*///////order-item/////////*/
 .order-item{
@@ -509,7 +651,21 @@ box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 5px;
   margin-left: 1.3rem;
 }
-
+@media only screen and (max-width: 415px) {
+  .order-item{
+    width: 98%;
+    font-size: 12px;
+  }
+  .remove{
+    width: 4rem;
+    height: 2rem;
+    width: 4rem;
+    font-size: 13px;
+    align-self: center;
+    border-radius: 5px;
+    margin-left: 1.3rem;
+  }
+}
 /*////////orders page////*/
 .oders-dispay{
   min-height: 75vh;
@@ -519,7 +675,6 @@ box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 .order-list{
   width: 68vw;
   min-height: 100%;
- 
 }
 .order-payment{
   width: 30vw;
@@ -568,6 +723,22 @@ margin: auto;
   margin: auto;
   align-items: center;
   margin-bottom: 1rem;
+}
+@media only screen and (max-width: 415px) {
+  .oders-dispay{
+    flex-direction: column;
+    min-height: 80vh;
+  }
+  .order-list{
+    width: 95vw;
+    margin: auto;
+    min-height: 100%;
+  }
+  .order-payment{
+    width: 90vw;
+    margin: auto;
+    min-height: 70%;
+  }
 }
 
 /*////////////CONTACT PAGE/////////////*/
@@ -632,4 +803,57 @@ margin: auto;
   height: 2rem;
   width: 50%;
   margin-top: 1rem;
+}
+
+@media only screen and (max-width: 415px) {
+  .contact-section{
+    width: 90vw;
+    margin-left: 5%;
+  }
+  .contact-form input{
+    width: 70%;
+    height: 1rem;
+    font-size: 12px;
+  }
+  .contact-message textarea{
+    width: 80%;
+    height: 50%;
+    margin-top: 1rem;
+    
+  }
+}
+
+
+/*/////LOADER/////////*/
+.skeleton{
+  animation: skeleton-loading 1s linear infinite alternate;
+  border-radius: 5px;
+}
+@keyframes skeleton-loading{
+  0%{
+    background-color: rgb(234, 232, 225);
+  }
+  100%{
+    background-color: rgb(198, 195, 186);
+  }
+
+
+}
+.cost-loader{
+  height: 20px;
+  width: 5rem;
+}
+.title-loader{
+  height: 20px;
+  width: 6rem;
+}
+.loaders{
+  display: flex;
+  width: 99vw;
+  gap:1.5rem;
+  height: 100vh;
+  flex-wrap: wrap;
+}
+.display-card .skel-btn{
+  height: 1.5rem;
 }

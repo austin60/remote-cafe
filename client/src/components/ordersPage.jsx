@@ -6,10 +6,10 @@ import { connect } from "react-redux";
 
 
 const OdersPage=(props)=>{
-    const{orders,handleChange,makeOrder}=props
+    const{orders,handleChange,makeOrder,accountLogin}=props
     return(
         <div className="page">
-            <MenuBar handleChange={handleChange}/>
+            <MenuBar handleChange={handleChange} accountLogin={accountLogin}/>
             <div className="oders-dispay">
                 <div className="order-list">
                     <div className="order-title">

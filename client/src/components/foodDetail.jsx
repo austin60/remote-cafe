@@ -32,8 +32,7 @@ const FoodDetail = (props) => {
        
         <div className="order-info">
             <div className="food-desc">
-                <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente ipsum beatae nobis similique suscipit ea aut blanditiis recusandae accusantium, nulla et perspiciatis 
-                    sunt quos quae alias repellendus voluptate minus aperiam</p>
+                <p>{fopen.desc}</p>
             </div>
            
             <div className="order-cost">

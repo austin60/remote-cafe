@@ -10,8 +10,6 @@ import axios from 'axios'
 
 class App extends Component{
   state={
-   // data:[],
-    //orders:localStorage.getItem("orders")?JSON.parse(localStorage.getItem("orders")):[],
     //food model
     foodname:'',
     price:'',
@@ -55,8 +53,9 @@ class App extends Component{
     this.setState({[input]:e.target.value})
   }
 
+  //facilitate login
 accountLogin=()=>{
-  const{lphone,lemail}=this.state
+ const{lphone,lemail}=this.state
 
   if(lphone!=='' && lemail !==''){
     const client={
@@ -74,6 +73,8 @@ accountLogin=()=>{
  }
 
 }
+
+//create account
 createAccount=()=>{
   const{ custname,phone,email,pass1,pass2}=this.state;
   const numbers=/[\d]/g;
@@ -82,6 +83,7 @@ createAccount=()=>{
   const validPass=/[A-Z0-9]/g;
 
   const element=document.getElementById('error');
+  
   if(custname===""||phone===""||email===""||pass1===""){
     element.innerHTML='*fill all fields'
   }
@@ -116,6 +118,7 @@ createAccount=()=>{
     
  }
 
+ //pay and send order to admin
 makeOrder=()=>{
   const{ pphone,amount,orders}=this.state
   const payment={
@@ -131,10 +134,6 @@ makeOrder=()=>{
 
    axios.post("/make-order",Order)
     
- }
-
- componentDidMount(){
-  console.log(this.state.orders)
  }
 
   render(){

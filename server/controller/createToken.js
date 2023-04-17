@@ -1,8 +1,9 @@
 const axios=require('axios')
+require("dotenv").config()
 
 const CreateToken=async(req,res,next)=>{
-  const secret="iGANMjVF2opLACpx";
-  const consumer="M1GM3FP0oGe6ZqP1O7CdzGrcT29kIRA6"; 
+  const secret=process.env.client_secret;
+  const consumer=process.env.consumer; 
   const auth = new Buffer.from(`${consumer}:${secret}`).toString("base64");
 
   await axios.get("https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials",

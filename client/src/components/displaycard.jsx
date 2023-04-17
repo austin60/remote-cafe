@@ -2,9 +2,7 @@ import { useState,useEffect } from "react";
 import FoodDetail from "./foodDetail";
 import { fetchData } from "../redux/actions/productActions";
 import { connect} from "react-redux";
-
-
-
+import CardLoaders from "./cardloaders";
 
 const DisplayCard=(props)=>{
    useEffect(()=>fetchData(),[])
@@ -19,9 +17,9 @@ const DisplayCard=(props)=>{
 
 return(
     <>
-  { data.map(dataitem=>( <div key={dataitem._id} className="display-card">
+  {data<1?<CardLoaders/>: data.map(dataitem=>( <div key={dataitem._id} className="display-card">
         <div className="image-display">
-              <img src={img?dataitem.img1:dataitem.img2} alt=""  onMouseOver={()=>setImg(false)} onMouseOut={()=>setImg(true)}/>
+             <img src={dataitem.img1} alt=""  onMouseOver={e => (e.currentTarget.src =dataitem.img2)} onMouseOut={e => (e.currentTarget.src =dataitem.img1)}/>
         </div>
         <div className="info-display">
             <span className="food-title">{dataitem.foodname}</span>
