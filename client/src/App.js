@@ -6,6 +6,7 @@ import OdersPage from './components/ordersPage';
 import AddFoodPage from './components/addFoodPage';
 import { BrowserRouter as Router,Routes,  Route} from 'react-router-dom';
 import axios from 'axios'
+import { DB_URL } from './url';
 
 
 class App extends Component{
@@ -62,7 +63,7 @@ accountLogin=()=>{
       phone:lphone,
       email:lemail
     }
-    axios.post("/remotecafe/client",client)
+    axios.post(`${DB_URL}/remotecafe/client`,client)
     .then(res=>this.setState({client:res.data},()=>{
       sessionStorage.setItem('userphone',JSON.stringify(this.state.client[0].phone));
     }))
