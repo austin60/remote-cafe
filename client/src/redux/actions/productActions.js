@@ -5,7 +5,7 @@ import { DB_URL } from "../../url";
 
 export const fetchData = () => async (dispatch) => {
     try {
-      const res = await axios.get(`${DB_URL} /remotecafe/`);
+      const res = await axios.get(`${DB_URL}/remotecafe/`);
   
       dispatch({
         type: FETCH_DATA,
